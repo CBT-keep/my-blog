@@ -146,11 +146,15 @@ function readPort(value: string | undefined): number {
 /* -------------------------------------------------------------------------- */
 
 async function runGit(args: string[]): Promise<string> {
-	const { stdout, stderr } = await execFileAsync("git", args, {
-		cwd: REPO_ROOT,
-		env: process.env,
-		maxBuffer: 4 * 1024 * 1024,
-	});
+	const { stdout, stderr } = await execFileAsync(
+		"git",
+		["-c", `safe.directory=${REPO_ROOT}`, ...args],
+		{
+			cwd: REPO_ROOT,
+			env: process.env,
+			maxBuffer: 4 * 1024 * 1024,
+		},
+	);
 	return `${stdout}${stderr}`.trim();
 }
 
