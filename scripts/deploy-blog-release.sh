@@ -5,12 +5,13 @@
 
 set -euo pipefail
 
-BLOG_REPO="${BLOG_REPO:-MmzMing/my-blog}"
+BLOG_REPO="${BLOG_REPO:-CBT-keep/my-blog}"
 BLOG_RELEASE="${BLOG_RELEASE:-blog-latest}"
 BLOG_DEPLOY_DIR="${BLOG_DEPLOY_DIR:-/opt/blog/dist}"
 BLOG_STATE_DIR="${BLOG_STATE_DIR:-/var/lib/blog-deploy}"
 BLOG_ASSET_NAME="${BLOG_ASSET_NAME:-blog-dist.tar.gz}"
 BLOG_NGINX_SERVICE="${BLOG_NGINX_SERVICE:-nginx}"
+BLOG_DOWNLOAD_BASE="${BLOG_DOWNLOAD_BASE:-https://gh-proxy.com/}"
 
 state_file="${BLOG_STATE_DIR}/release"
 temp_dir="${BLOG_STATE_DIR}/tmp"
@@ -61,11 +62,24 @@ if [[ -f "$state_file" && "$(cat "$state_file")" == "$fingerprint" ]]; then
 	exit 0
 fi
 
-curl -fsSL --retry 3 --connect-timeout 15 \
-	-o "$temp_dir/$BLOG_ASSET_NAME" \
-	"$asset_url"
+downloaded=0
+for download_url in "${BLOG_DOWNLOAD_BASE}${asset_url}" "$asset_url"; do
+	if curl -fsSL --http1.1 --retry 3 --retry-all-errors \
+		--connect-timeout 15 --max-time 180 -A "Mozilla/5.0" \
+		-o "$temp_dir/$BLOG_ASSET_NAME" \
+		"$download_url"; then
+		downloaded=1
+		break
+	fi
+done
 
-if ! tar -tzf "$temp_dir/$BLOG_ASSET_NAME" | grep -qx "./index.html"; then
+if [[ "$downloaded" != "1" ]]; then
+	echo "failed to download $BLOG_ASSET_NAME" >&2
+	exit 1
+fi
+
+tar -tzf "$temp_dir/$BLOG_ASSET_NAME" >"$temp_dir/files.txt"
+if ! grep -qx "./index.html" "$temp_dir/files.txt"; then
 	echo "release asset does not contain ./index.html" >&2
 	exit 1
 fi
