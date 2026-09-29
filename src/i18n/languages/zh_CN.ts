@@ -178,7 +178,7 @@ export const zh_CN: Translation = {
 	[Key.siteStatsSource]: "来源",
 	[Key.footerRunningDays]: "已运行 {days} 天",
 	[Key.footerRunningTime]:
-		"本站已苟活 {days} 天 {hours} 时 {minutes} 分 {seconds} 秒",
+		"这盏灯已经亮了 {days} 天 {hours} 时 {minutes} 分 {seconds} 秒",
 	[Key.footerLastUpdate]: "最后更新于 {days} 天前",
 	[Key.today]: "今天",
 
@@ -423,7 +423,7 @@ export const zh_CN: Translation = {
 	[Key.searchDescription]:
 		"使用站内搜索查找已发布文章和相关内容，输入关键词即可快速定位主题、标题与正文中的信息。",
 	[Key.aboutDescription]:
-		"了解本站作者、内容方向、技术栈与联系方式，查看网站的更新记录、维护信息和持续演进的内容规划，以及关于学习、开发与生活的更多思考。",
+		"关于 CBT-keep：来自福州的软件工程本科生，记录代码、生活，以及一个人缓慢抵达自己的过程。",
 	[Key.aboutChangelogTitle]: "更新日志",
 	[Key.aboutChangelogRecentLimit]: "仅展示最近 {count} 条更新",
 	[Key.aboutChangelogPagesLabel]: "涉及页面",

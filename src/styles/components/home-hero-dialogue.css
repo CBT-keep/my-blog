@@ -486,6 +486,27 @@
 	object-fit: contain;
 }
 
+.home-hero__sticker--avatar {
+	z-index: 2;
+	bottom: clamp(3.25rem, 6svh, 5rem);
+	left: clamp(1rem, 2.5vw, 3rem);
+	width: min(clamp(7rem, 10vw, 9rem), 25svh);
+	aspect-ratio: 1;
+	overflow: hidden;
+	border: 3px solid var(--home-hero-ink);
+	border-radius: var(--radius-full);
+	background: color-mix(in oklch, var(--home-hero-surface) 82%, transparent);
+	box-shadow:
+		0 0 0 0.45rem color-mix(in oklch, var(--home-hero-ink) 12%, transparent),
+		0 1.2rem 2.8rem var(--home-hero-shadow);
+}
+
+.home-hero__sticker-avatar-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 .home-hero__sticker-feature {
 	position: absolute;
 	z-index: 1;
@@ -694,6 +715,12 @@
 		bottom: 0.75rem;
 		left: 0;
 		width: min(64vw, 18rem);
+	}
+
+	.home-hero__sticker--avatar {
+		bottom: 1.25rem;
+		left: 1rem;
+		width: min(34vw, 8rem);
 	}
 }
 

@@ -1,11 +1,15 @@
 ---
+import type { ImageMetadata } from "astro";
 import type { HeroStickerConfig } from "@/types/config";
 
 interface Props {
 	config: HeroStickerConfig;
+	avatar: ImageMetadata | string;
+	avatarAlt: string;
 }
 
-const { config } = Astro.props;
+const { config, avatar, avatarAlt } = Astro.props;
+const avatarSrc = typeof avatar === "string" ? avatar : avatar.src;
 const stickerStyle = [
 	`--home-hero-left-eye-x: ${config.eye.xPercent}%`,
 	`--home-hero-left-eye-y: ${config.eye.yPercent}%`,
@@ -20,41 +24,19 @@ const stickerStyle = [
 ---
 
 <figure
-	class="home-hero__sticker"
+	class="home-hero__sticker home-hero__sticker--avatar"
 	style={stickerStyle}
 	data-hero-sticker
 	data-eye-travel-x={config.eye.travelXPercent}
 	data-eye-travel-y={config.eye.travelYPercent}
 >
 	<img
-		class="home-hero__sticker-image"
-		src={config.image}
-		alt={config.alt}
-		width="1254"
-		height="1254"
+		class="home-hero__sticker-image home-hero__sticker-avatar-image"
+		src={avatarSrc}
+		alt={avatarAlt}
+		width="512"
+		height="512"
 		loading="eager"
 		decoding="async"
 	/>
-	<span
-		class="home-hero__sticker-feature home-hero__sticker-eye home-hero__sticker-eye--left"
-		data-hero-sticker-feature
-		data-motion-scale="1"
-		aria-hidden="true"
-	>
-		<span class="home-hero__sticker-eye-pupil"></span>
-	</span>
-	<span
-		class="home-hero__sticker-feature home-hero__sticker-eye home-hero__sticker-eye--right"
-		data-hero-sticker-feature
-		data-motion-scale="1"
-		aria-hidden="true"
-	>
-		<span class="home-hero__sticker-eye-pupil"></span>
-	</span>
-	<span
-		class="home-hero__sticker-feature home-hero__sticker-mouth"
-		data-hero-sticker-feature
-		data-motion-scale={config.mouth.travelScale}
-		aria-hidden="true"
-	></span>
 </figure>

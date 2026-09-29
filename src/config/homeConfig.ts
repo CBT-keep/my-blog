@@ -9,16 +9,20 @@ export const homeConfig: HomeConfig = {
 	avatar: "assets/images/avatar.webp",
 
 	// 名字
-	name: "MmzMing",
+	name: "CBT-keep",
 
 	// 首页展示名字（留空则使用 name）
-	displayName: "MmzMing",
+	displayName: "CBT-keep",
 
 	// 职业/身份标签
-	occupation: "[全干工程师 / 技术博主]",
+	occupation: "[软件工程在读 / 在抵达之前]",
 
 	// 个人签名（支持多条，会循环打字+删除效果）
-	bio: ["且视他人之疑目如盏盏鬼火，大胆地去走你的夜路"],
+	bio: [
+		"我是 CBT-keep。从福州出发，在成为自己的路上，慢慢走，也认真走。",
+		"山不让尘，川不辞盈。",
+		"莫听穿林打叶声，何妨吟啸且徐行。",
+	],
 
 	hero: {
 		backgroundImage: "/assets/images/home/home.avif",
@@ -48,25 +52,26 @@ export const homeConfig: HomeConfig = {
 			interactionHold: 0.06,
 		},
 		contact: {
-			platform: "B站",
-			handle: "Mmz明崽",
+			platform: "GitHub",
+			handle: "CBT-keep",
+			href: "https://github.com/CBT-keep",
 		},
 		sticker: {
-			image: "/assets/images/home/character.avif",
-			alt: "黑猫角色贴纸",
+			image: "assets/images/avatar.webp",
+			alt: "CBT-keep",
 			eye: {
-				xPercent: 41.1,
-				yPercent: 48.2,
+				xPercent: 37.5,
+				yPercent: 53.5,
 				travelXPercent: 1.4,
 				travelYPercent: 1,
 			},
 			rightEye: {
-				xPercent: 64.1,
-				yPercent: 44.7,
+				xPercent: 66.5,
+				yPercent: 53.5,
 			},
 			mouth: {
-				xPercent: 53.4,
-				yPercent: 50.7,
+				xPercent: 52,
+				yPercent: 70.5,
 				widthPercent: 7.2,
 				heightPercent: 1.9,
 				rotation: -6,
@@ -77,7 +82,7 @@ export const homeConfig: HomeConfig = {
 		dialogue: {
 			enabled: true,
 			speakers: {
-				host: "哈基墩",
+				host: "CBT-keep",
 				visitor: "访客",
 			},
 			menuTitle: "想聊点什么？",
@@ -85,48 +90,78 @@ export const homeConfig: HomeConfig = {
 			autoDelay: 1600,
 			// 默认逐句播放的简介，末句后弹出话题菜单
 			intro: [
-				{ speaker: "host", text: "欸——来客人了喵～随便坐，别客气。" },
-				{ speaker: "host", text: "我是喵墩，老爸在摸鱼，这儿归我管了喵～" },
+				{ speaker: "host", text: "欢迎来坐。这里不是成功经验，更像一本还没写完的航行日志。" },
+				{ speaker: "host", text: "我叫 CBT-keep。目前在福州上大学，软件工程在读，暂时还没有能拿出来吓人的履历。" },
 				{
 					speaker: "host",
-					text: "对了喵，得搬上简介了~喵找找：且视他人之疑目如盏盏鬼火，大胆地去走你的夜路。",
+					text: "不过没关系。很多人不是先从光里出发，而是先学会在夜里点灯。",
 				},
-				{ speaker: "host", text: "想打听啥喵？戳戳下面的话题，喵跟你慢慢唠～" },
+				{ speaker: "host", text: "如果你也恰好站在起点，那我们可以一起往前走走。" },
 			],
 			// 话题菜单：点击进入逐句对话，末句后返回菜单
 			topics: [
 				{
-					title: "关于我",
+					title: "先认识一下",
 					lines: [
-						{ speaker: "visitor", text: "你爸是哪方面选手呀？" },
+						{ speaker: "visitor", text: "你是一个怎样的人？" },
 						{
 							speaker: "host",
-							text: "嘛……算个半桶水全栈喵，外加一个不务正业的博客写手。",
+							text: "一个来自福州的普通学生。喜欢计算机，也喜欢把脑子里的世界想得很远。",
+						},
+						{ speaker: "visitor", text: "听起来有点理想主义。" },
+						{
+							speaker: "host",
+							text: "是啊。可理想如果没有具体动作，就只是一朵漂亮的云。最近我在学的，就是让它一点点落地。",
 						},
 						{
 							speaker: "host",
-							text: "前端后端都摸一点，俗称「全干工程师」喵～",
-						},
-						{ speaker: "visitor", text: "听起来很忙的样子。" },
-						{
-							speaker: "host",
-							text: "忙归忙，但好玩呀——折腾本身就是浪漫喵～如果你感兴趣也可以加QQ群喵，放心，傻爸爸不咬人的",
+							text: "山不让尘，川不辞盈。今天多懂一点，明天就少慌一点。",
 						},
 					],
 				},
 				{
-					title: "博客特色",
+					title: "为什么记录",
 					lines: [
-						{ speaker: "visitor", text: "有什么好玩的功能吗？" },
+						{ speaker: "visitor", text: "为什么要把这些写下来？" },
 						{
 							speaker: "host",
-							text: "有个音乐3D可视化播放，但博客重点不是文章吗喵~老爸整站基本是AI搓出来的，喵爪都没动几下。",
+							text: "因为记忆会褪色，情绪偶尔也会撒谎。只有写下来的东西，能替我记住曾经走过哪里。",
 						},
 						{
 							speaker: "host",
-							text: "傻爸爸最近在捣鼓Agent，不知道又要整啥活喵～",
+							text: "也许以后回头看，会发现当时觉得过不去的坎，不过是一段坡路。",
 						},
-						{ speaker: "host", text: "慢慢逛，角落里藏着不少彩蛋呢喵！" },
+						{
+							speaker: "host",
+							text: "岁月不居，时节如流。总得留下些什么，证明我们没有白走。",
+						},
+					],
+				},
+				{
+					title: "想去的地方",
+					lines: [
+						{ speaker: "visitor", text: "你好像很想去杭州。" },
+						{
+							speaker: "host",
+							text: "嗯。喜欢那里的水汽，也喜欢互联网行业还在生长的声音。",
+						},
+						{
+							speaker: "host",
+							text: "但比起“去到哪里”，我更在意自己到那时有没有变成一个更可靠的人。",
+						},
+						{ speaker: "host", text: "毕竟远方不是奖赏，它只是下一段路的起点。" },
+					],
+				},
+				{
+					title: "此刻相信的事",
+					lines: [
+						{ speaker: "visitor", text: "如果努力暂时没有回应呢？" },
+						{
+							speaker: "host",
+							text: "那就把等待也当作生活的一部分。不是所有种子，都会在播种的第二天发芽。",
+						},
+						{ speaker: "host", text: "莫听穿林打叶声，何妨吟啸且徐行。" },
+						{ speaker: "host", text: "慢一点没关系，别把自己弄丢就好。" },
 					],
 				},
 			],
@@ -141,9 +176,9 @@ export const homeConfig: HomeConfig = {
 	},
 
 	dataLayer: {
-		visitImage: "/assets/images/home/home-data-1.avif",
-		archiveImage: "/assets/images/home/home-data-2.avif",
-		contactImage: "/assets/images/home/home-data-3.avif",
+		visitImage: "/assets/images/home-blinds/user/stage.webp",
+		archiveImage: "/assets/images/home-blinds/user/lake-night.webp",
+		contactImage: "/assets/images/home-blinds/user/sunset.webp",
 	},
 
 	// 桌面端双层影像交互：固定背景揭示 → 五幕画面横向叙事
@@ -158,8 +193,8 @@ export const homeConfig: HomeConfig = {
 			// 长条横移揭示的入场标题：标题单行显示（版式按 4 字排），
 			// 祝福语单行显示（版式按 5 字排），可自由增减条数
 			headline: {
-				title: "祝愿各位",
-				messages: ["夜路有星光", "岁岁皆欢愉", "所念皆星河", "版本无回滚"],
+				title: "欢迎来到",
+				messages: ["慢慢新生", "向着远方", "写下此刻", "终会抵达"],
 				enterDuration: 0.6,
 				messageHold: 2.6,
 				messageFlipDuration: 0.75,
@@ -171,45 +206,45 @@ export const homeConfig: HomeConfig = {
 			cycleImages: ["/assets/images/home-blinds/act-cycle/1.webp"],
 			cycleDuration: 26,
 			composite: {
-				eyebrow: "PROLOGUE / RUN",
-				title: "筑一间小屋",
-				description: "以代码为梁、热爱为瓦，荒原上筑起一间自己的小屋。",
-				alt: "第一幕插画",
+				eyebrow: "PROLOGUE / DEPART",
+				title: "从此刻出发",
+				description: "把遥远写成路，把愿望写进今天。",
+				alt: "暮色山峦",
 				// 明信片右下角的落款日期，按每张图的实际日期改；删掉即不显示
-				date: "2026 / 05 / 07",
+				date: "2026 / 09 / 26",
 			},
 			items: [
 				{
 					eyebrow: "SCENE 02 / LIGHT",
-					title: "小屋落户",
-					description: "一纸备案落定，小屋自此有门有牌，堂堂正正晒着太阳。",
-					image: "/assets/images/home-blinds/act3/1.webp",
-					alt: "第二幕插画",
-					date: "2026 / 06 / 10",
+					title: "写给未来",
+					description: "你一定能成为你想要成为的人。",
+					image: "/assets/images/home-blinds/user/stage.webp",
+					alt: "舞台光束与文字",
+					date: "2026 / 09 / 26",
 				},
 				{
-					eyebrow: "SCENE 03 / WIND",
-					title: "尘满窗台",
-					description: "人往学海拾新，倦意悄悄落了窗，小屋静候，蒙上薄尘。",
-					image: "/assets/images/home-blinds/act3/2.webp",
-					alt: "第三幕插画",
-					date: "2026 / 06 / 21",
+					eyebrow: "SCENE 03 / NIGHT",
+					title: "夜色有灯",
+					description: "水面收住喧嚣，也替我留了一盏光。",
+					image: "/assets/images/home-blinds/user/lake-night.webp",
+					alt: "夜晚湖面与路灯",
+					date: "2026 / 09 / 26",
 				},
 				{
-					eyebrow: "SCENE 04 / PAGE",
-					title: "重燃灯火",
-					description: "拂去薄尘，重燃灯火，一砖一瓦再把小屋细细打磨。",
-					image: "/assets/images/home-blinds/act3/3.webp",
-					alt: "第四幕插画",
-					date: "2026 / 08 / 18",
+					eyebrow: "SCENE 04 / LOCAL",
+					title: "小鲸入海",
+					description: "先让它在本地游起来，再驶向更远的服务器。",
+					image: "/assets/images/home-blinds/user/deepseek-whale-girl.webp",
+					alt: "DeepSeek 鲸娘",
+					date: "2026 / 09 / 26",
 				},
 				{
-					eyebrow: "FINALE / ARRIVE",
-					title: "抵达之前",
-					description: "笔墨暂歇，来日方长；下一程山水，且歌且行。",
-					image: "/assets/images/home-blinds/act3/4.webp",
-					alt: "第五幕插画",
-					date: "2026 / 09 / 01",
+					eyebrow: "FINALE / RETURN",
+					title: "下一程山海",
+					description: "故事没有结束，只是把这一页轻轻翻过。",
+					image: "/assets/images/home-blinds/user/sunset.webp",
+					alt: "暮色山峦",
+					date: "2026 / 09 / 26",
 				},
 			],
 			standImages: ["/assets/images/home-blinds/act4/1.webp"],
@@ -224,27 +259,9 @@ export const homeConfig: HomeConfig = {
 	// showName: true 时显示图标和名称，false 时只显示图标
 	links: [
 		{
-			name: "qq",
-			icon: "fa7-brands:qq",
-			url: "https://qm.qq.com/q/2R07cjGTZ0",
-			showName: false,
-		},
-		{
-			name: "B站",
-			icon: "fa7-brands:bilibili",
-			url: "https://space.bilibili.com/15446538",
-			showName: false,
-		},
-		{
 			name: "GitHub",
 			icon: "fa7-brands:github",
-			url: "https://github.com/MmzMing",
-			showName: false,
-		},
-		{
-			name: "站内留言",
-			icon: "material-symbols:chat-rounded",
-			url: "/guestbook/",
+			url: "https://github.com/CBT-keep",
 			showName: false,
 		},
 		{

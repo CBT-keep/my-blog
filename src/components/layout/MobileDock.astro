@@ -336,10 +336,6 @@ const isHomePath = Astro.url.pathname === "/" || Astro.url.pathname === "";
 					<Icon name="material-symbols:format-list-bulleted" is:inline />
 					<span>{i18n(I18nKey.tableOfContents)}</span>
 				</button>
-				<button class="is-hidden" type="button" id="mobile-dock-comment-btn" aria-label={i18n(I18nKey.comments)}>
-					<Icon name="mingcute:comment-line" is:inline />
-					<span>{i18n(I18nKey.comments)}</span>
-				</button>
 				<button class="is-hidden" type="button" id="mobile-dock-top-btn" aria-label={i18n(I18nKey.backToTop)}>
 					<Icon name="material-symbols:keyboard-arrow-up-rounded" is:inline />
 					<span>{i18n(I18nKey.top)}</span>
@@ -411,7 +407,6 @@ const isHomePath = Astro.url.pathname === "/" || Astro.url.pathname === "";
 		const volumeOffIcon = muteButton?.querySelector<HTMLElement>(".mobile-dock__volume-off-icon");
 		const tocButton = document.getElementById("mobile-dock-toc-btn");
 		const announcementButton = document.getElementById("mobile-dock-announcement-btn");
-		const commentButton = document.getElementById("mobile-dock-comment-btn");
 		const topButton = document.getElementById("mobile-dock-top-btn");
 
 		let shape: DockShape = "pill";
@@ -752,13 +747,10 @@ const isHomePath = Astro.url.pathname === "/" || Astro.url.pathname === "";
 			const pathname = window.location.pathname;
 			const isHome = pathname === "/" || pathname === "";
 			const isPost = /\/posts?\//.test(pathname);
-			const isFriends = /^\/friends\/?$/.test(pathname);
-			const hasComment = !!document.getElementById("post-comments");
 			announcementButton?.classList.toggle("is-hidden", !isHome);
 			announcementButton?.setAttribute("aria-hidden", String(!isHome));
 			announcementButton?.setAttribute("tabindex", isHome ? "0" : "-1");
 			tocButton?.classList.toggle("is-hidden", !isPost);
-			commentButton?.classList.toggle("is-hidden", !(isPost || isFriends) || !hasComment);
 			topButton?.classList.toggle("is-hidden", window.scrollY <= 200);
 			if (!isHome && activeView === "announcement") setView("menu");
 			if (!isPost && activeView === "toc") setView("menu");
@@ -848,11 +840,6 @@ const isHomePath = Astro.url.pathname === "/" || Astro.url.pathname === "";
 				: current;
 			setTheme(resolved === "light" ? "dark" : "light");
 			updateThemeIcon();
-		}, { signal });
-
-		document.getElementById("mobile-dock-comment-btn")?.addEventListener("click", () => {
-			closeCard();
-			document.getElementById("post-comments")?.scrollIntoView({ behavior: "smooth", block: "start" });
 		}, { signal });
 
 		document.getElementById("mobile-dock-top-btn")?.addEventListener("click", () => {

@@ -1,6 +1,7 @@
 ---
 import Icon from "@components/common/Icon.astro";
 import HeroSticker from "@components/layout/HeroSticker.astro";
+import type { ImageMetadata } from "astro";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import type { HeroDialogueConfig, HeroStickerConfig } from "@/types/config";
@@ -8,10 +9,12 @@ import type { HeroDialogueConfig, HeroStickerConfig } from "@/types/config";
 interface Props {
 	config: HeroDialogueConfig;
 	sticker: HeroStickerConfig;
+	avatar: ImageMetadata | string;
+	avatarAlt: string;
 	fallbackHostName: string;
 }
 
-const { config, sticker, fallbackHostName } = Astro.props;
+const { config, sticker, avatar, avatarAlt, fallbackHostName } = Astro.props;
 const dialogueConfig = {
 	speakers: {
 		host: config.speakers?.host || fallbackHostName,
@@ -37,7 +40,7 @@ const dialogueConfig = {
 	<ul class="home-hero__dialogue-menu" data-dialogue-menu hidden></ul>
 
 	<div class="home-hero__dialogue-layout">
-		<HeroSticker config={sticker} />
+		<HeroSticker config={sticker} avatar={avatar} avatarAlt={avatarAlt} />
 
 		<div class="home-hero__dialogue-box" data-dialogue-box data-speaker="host">
 			<div class="home-hero__dialogue-body" data-dialogue-click>

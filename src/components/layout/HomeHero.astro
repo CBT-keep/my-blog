@@ -3,6 +3,8 @@ import HeroContact from "@components/layout/HeroContact.astro";
 import HeroDialogue from "@components/layout/HeroDialogue.astro";
 import HeroMosaic from "@components/layout/HeroMosaic.astro";
 import HeroQuickActions from "@components/layout/HeroQuickActions.astro";
+import type { ImageMetadata } from "astro";
+import * as path from "node:path";
 import { homeConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
@@ -10,6 +12,23 @@ import { i18n } from "@/i18n/translation";
 const { hero } = homeConfig;
 const dialogueEnabled =
 	hero.dialogue?.enabled !== false && Boolean(hero.dialogue);
+let avatarImage: ImageMetadata | null = null;
+const avatarValue = homeConfig.avatar || "";
+if (
+	avatarValue &&
+	!avatarValue.startsWith("/") &&
+	!avatarValue.startsWith("http")
+) {
+	const files = import.meta.glob<ImageMetadata>(
+		"../../**/*.{png,jpg,jpeg,webp,avif,gif,svg}",
+		{ import: "default" },
+	);
+	const normalizedPath = path
+		.normalize(path.join("../../", avatarValue))
+		.replace(/\\/g, "/");
+	const file = files[normalizedPath];
+	if (file) avatarImage = await file();
+}
 const runtimeConfig = {
 	mosaic: hero.mosaic,
 	rain: {
@@ -74,6 +93,8 @@ const runtimeConfig = {
 		<HeroDialogue
 			config={hero.dialogue}
 			sticker={hero.sticker}
+			avatar={avatarImage || avatarValue}
+			avatarAlt={homeConfig.displayName || homeConfig.name}
 			fallbackHostName={homeConfig.displayName || homeConfig.name}
 		/>
 	)}

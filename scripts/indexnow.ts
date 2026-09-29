@@ -15,7 +15,7 @@
  *   pnpm indexnow 2024/foo 2024/bar
  *   pnpm indexnow --diff
  *   pnpm indexnow --all --dry-run
- *   pnpm indexnow --url https://tblog.mmzhiku.xyz/
+ *   pnpm indexnow --url https://example.com/
  *
  * 说明:
  *   - 密钥从 .env 的 INDEXNOW_KEY 读取，验证文件位于 public/{key}.txt

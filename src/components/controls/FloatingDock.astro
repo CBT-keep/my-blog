@@ -24,10 +24,6 @@ import { i18n } from "@/i18n/translation";
 			</button>
 		)}
 
-		<button class="dock-btn dock-btn-comment hide" id="dock-comment-btn" aria-label={i18n(I18nKey.comments)} aria-hidden="true" tabindex="-1" type="button" data-tooltip={i18n(I18nKey.comments)}>
-			<span class="dock-btn-icon"><Icon name="mingcute:comment-line" class="text-3xl" /></span>
-			<span class="dock-btn-label">{i18n(I18nKey.comments)}</span>
-		</button>
 	</div>
 
 	<button class="dock-btn dock-btn-top hide" id="dock-top-btn" aria-label={i18n(I18nKey.backToTop)} aria-hidden="true" tabindex="-1" type="button" data-tooltip={i18n(I18nKey.backToTop)}>
@@ -148,10 +144,6 @@ import { i18n } from "@/i18n/translation";
 			event.stopPropagation();
 			window.scroll({ top: 0, behavior: "smooth" });
 		}, { signal: dockSignal });
-		document.getElementById("dock-comment-btn")?.addEventListener("click", (event) => {
-			event.stopPropagation();
-			document.getElementById("post-comments")?.scrollIntoView({ behavior: "smooth", block: "start" });
-		}, { signal: dockSignal });
 		function updateScrollDependent() {
 			const topButton = document.getElementById("dock-top-btn");
 			if (!topButton) return;
@@ -164,10 +156,6 @@ import { i18n } from "@/i18n/translation";
 		function updatePathDependent() {
 			const pathname = window.location.pathname;
 			const isPost = /\/posts?\//.test(pathname);
-			const isFriends = /^\/friends\/?$/.test(pathname);
-			const hasComment = !!document.getElementById("post-comments");
-
-			setButtonVisibility("dock-comment-btn", (isPost || isFriends) && hasComment);
 			/* 目录按钮：文章详情且宽屏（≥96rem）已有大纲栏时隐藏 */
 			const tocDrawerOpen = !document.getElementById("dock-drawer-toc")?.classList.contains("dock-drawer-closed");
 			const showToc = isPost && !window.matchMedia("(min-width: 96rem)").matches;

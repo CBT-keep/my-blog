@@ -2,11 +2,11 @@ import type { CommentConfig } from "../types/config";
 
 export const commentConfig: CommentConfig = {
 	// 评论系统类型: none, twikoo, waline, giscus, disqus, artalk，默认为none，即不启用评论系统
-	type: "waline",
+	type: "none",
 
 	//twikoo评论系统配置，版本1.7.4
 	twikoo: {
-		envId: "https://twikoo.vercel.app",
+		envId: "",
 		// 设置 Twikoo 评论系统语言
 		lang: "zh-CN",
 		// 是否启用文章访问量统计功能
@@ -16,15 +16,11 @@ export const commentConfig: CommentConfig = {
 	//waline评论系统配置
 	waline: {
 		// waline 后端服务地址
-		serverURL: "https://waline.mmzhiku.xyz/",
+		serverURL: "",
 		// 设置 Waline 评论系统语言
 		lang: "zh-CN",
 		// 设置 Waline 评论系统表情地址
-		emoji: [
-			"https://unpkg.com/@waline/emojis@1.4.0/weibo",
-			"https://unpkg.com/@waline/emojis@1.4.0/bilibili",
-			"https://unpkg.com/@waline/emojis@1.4.0/bmoji",
-		],
+		emoji: [],
 		// 可配置兼容的自建图片接口；留空时使用 Waline 原生内嵌图片
 		// 评论登录模式。可选值如下：
 		//   'enable'   —— 默认，允许访客匿名评论和用第三方 OAuth 登录评论，兼容性最佳。
@@ -38,7 +34,7 @@ export const commentConfig: CommentConfig = {
 	// artalk评论系统配置
 	artalk: {
 		// artalk后端程序 API 地址
-		server: "https://artalk.example.com/",
+		server: "",
 		// 设置 Artalk 语言
 		locale: "zh-CN",
 		// 是否启用文章访问量统计功能
@@ -48,13 +44,13 @@ export const commentConfig: CommentConfig = {
 	//giscus评论系统配置
 	giscus: {
 		// 设置 Giscus 评论系统仓库
-		repo: "MmzMing/my-blog",
+		repo: "",
 		// 设置 Giscus 评论系统仓库ID
-		repoId: "R_kgDOSXWjBQ",
+		repoId: "",
 		// 设置 Giscus 评论系统分类
 		category: "General",
 		// 获取 Giscus 评论系统分类ID
-		categoryId: "DIC_kwDOSXWjBc4C8jP5",
+		categoryId: "",
 		// 获取 Giscus 评论系统映射方式
 		mapping: "pathname",
 		// 获取 Giscus 评论系统严格模式
@@ -74,6 +70,6 @@ export const commentConfig: CommentConfig = {
 	//disqus评论系统配置
 	disqus: {
 		// 获取 Disqus 评论系统
-		shortname: "firefly",
+		shortname: "",
 	},
 };

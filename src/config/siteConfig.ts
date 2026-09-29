@@ -7,31 +7,31 @@ const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "MmzMing的博客",
+	title: "CBT-keep 的博客",
 
 	// 站点副标题
-	subtitle: "MmzMing",
+	subtitle: "CBT-keep",
 
 	// 站点 URL
-	site_url: "https://tblog.mmzhiku.xyz",
+	site_url: "http://localhost:4321",
 
 	// 站点描述
 	// 同时用作：首页与各功能页的 <meta name="description"> 兜底、JSON-LD 里
 	// WebSite/Person 实体的 description。所以这里写清站点的实际内容方向，
 	// 而不是只写"记录学习与生活"这类无检索价值的通用表述。
 	description:
-		"记录 Java 后端与 AI 工程的实践笔记，涵盖并发编程、接口安全、认证授权、缓存设计、性能优化与 RAG 应用开发。",
+		"CBT-keep 的个人博客。记录代码与生活，也记录一个年轻人穿过迷茫、缓慢抵达自己的过程。",
 
 	// 站点关键词
 	keywords: [
-		"MmzMing",
-		"JAVA",
-		"AI",
+		"CBT-keep",
+		"软件工程",
+		"计算机学习",
 		"Astro",
-		"ACGN",
+		"Svelte",
 		"博客",
-		"技术博客",
 		"静态博客",
+		"个人网站",
 	],
 
 	// 主题色
@@ -52,10 +52,6 @@ export const siteConfig: SiteConfig = {
 	// Favicon 配置
 	favicon: [
 		{
-			src: "/favicon/favicon.ico",
-			sizes: "32x32",
-		},
-		{
 			src: "/favicon/favicon-16x16.png",
 			sizes: "16x16",
 		},
@@ -68,23 +64,7 @@ export const siteConfig: SiteConfig = {
 			sizes: "48x48",
 		},
 		{
-			src: "/favicon/favicon.svg",
-			sizes: "any",
-		},
-		{
 			src: "/favicon/apple-touch-icon.png",
-			sizes: "180x180",
-		},
-		{
-			src: "/favicon/apple-touch-icon-152x152.png",
-			sizes: "152x152",
-		},
-		{
-			src: "/favicon/apple-touch-icon-167x167.png",
-			sizes: "167x167",
-		},
-		{
-			src: "/favicon/apple-touch-icon-180x180.png",
 			sizes: "180x180",
 		},
 		{
@@ -94,10 +74,6 @@ export const siteConfig: SiteConfig = {
 		{
 			src: "/favicon/android-chrome-512x512.png",
 			sizes: "512x512",
-		},
-		{
-			src: "/favicon/safari-pinned-tab.svg",
-			sizes: "any",
 		},
 	],
 
@@ -111,17 +87,17 @@ export const siteConfig: SiteConfig = {
 		// 4. 网络图片: { type: "url", value: "https://example.com/logo.png", alt: "Logo" }
 		logo: {
 			type: "image",
-			value: "assets/images/logo.png",
-			alt: "logo",
+			value: "assets/images/avatar.webp",
+			alt: "站点 Logo",
 		},
 		// 导航栏标题
-		title: "MmzMing的博客",
+		title: "CBT-keep 的博客",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 	},
 
 	// 站点开始日期，用于统计运行天数
-	siteStartDate: "2026-05-07",
+	siteStartDate: "2026-09-26",
 
 	// 站点时区（IANA 时区字符串），用于格式化bangumi、rss里的构建日期时间等等..
 	// 示例："Asia/Shanghai", "UTC", 如果为空，则按照构建服务器的时区进行时区转换
@@ -142,17 +118,12 @@ export const siteConfig: SiteConfig = {
 	// 是否显示文章顶部的分享按钮行（QQ / 邮件 / 飞书 / X / WhatsApp / 复制链接）
 	postShare: true,
 
-	// OpenGraph图片功能,注意开启后要渲染很长时间，不建议本地调试的时候开启。
-	// 开启后 Layout 的 og:image 优先取 /og/<slug>.png（1200x630 PNG），而非正文封面的
-	// WebP 变体——QQ / 微信抓取器对 WebP 渲染不稳定，关掉会导致卡片有标题没图。
-	generateOgImages: true,
+	// OpenGraph图片功能,注意开启后要渲染很长时间，不建议本地调试的时候开启
+	generateOgImages: false,
 
-	// 站点默认 OG 图：供 JSON-LD 结构化数据（Person.image / Organization.logo）与
-	// 非文章页的 og:image 兜底使用。必须是 JPEG / PNG 等位图通用格式而非 WebP——
-	// QQ / 微信抓取器对 WebP 渲染不稳定，首页分享会出文字不出图。
-	// 与 coverImageConfig.randomCoverImage.fallback（随机封面图 API 失败的回退，走浏览器
-	// <img>，WebP 无碍）互不相干，两者是同一份美术的不同编码，并非重复配置
-	defaultOgImage: "/assets/images/aut.jpg",
+	// 站点默认 OG 图：供 JSON-LD 结构化数据（SiteStructuredData）与无封面文章的结构化图片兜底使用。
+	// 与 coverImageConfig.randomCoverImage.fallback（随机封面图 API 失败的回退）互不相干，两者指向同一张图并非重复配置
+	defaultOgImage: "/assets/images/home/character.webp",
 
 	// 页面加载动画配置
 	pageLoader: {
@@ -170,15 +141,15 @@ export const siteConfig: SiteConfig = {
 		// 友链页面开关
 		friends: true,
 		// 打赏页面开关
-		sponsor: true,
+		sponsor: false,
 		// 留言板页面开关，需要配置评论系统
-		guestbook: true,
+		guestbook: false,
 		// 相册页面开关
 		gallery: false,
 		// 收藏API页面开关
 		collections: true,
 		// 音乐可视化页面开关
-		music: true,
+		music: false,
 		// 文档页面开关（/list/ 文章列表，导航栏「文章」下拉里显示为「文档」）
 		postList: true,
 		// 归档页面开关
@@ -203,17 +174,17 @@ export const siteConfig: SiteConfig = {
 		microsoftClarityId: "",
 		// Umami 统计配置
 		umamiAnalytics: {
-			websiteId: "d47eea8b-7ad5-472b-a838-c873ba859c4f",
-			shareId: "HZrqqAfVdx1UEVNm",
-			scriptUrl: "https://stats.mmzhiku.xyz/script.js",
+			websiteId: "",
+			shareId: "",
+			scriptUrl: "",
 			// 使用 Umami 的 PV 展示文章详情、列表与网格浏览量；启用时优先于评论系统统计
 			pageviews: {
-				enabled: true,
+			enabled: false,
 			},
 			// 是否追踪出站链接
-			trackOutboundLinks: true,
+			trackOutboundLinks: false,
 			// 是否收集浏览器性能指标
-			collectWebVitals: true,
+			collectWebVitals: false,
 			// 会话回放配置
 			relpays: {
 				// 是否启用会话回放
