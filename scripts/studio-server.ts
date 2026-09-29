@@ -13,7 +13,7 @@
  *                      需要在其他设备访问时设为 0.0.0.0
  *   STUDIO_PREVIEW_ORIGIN  博客 dev server 地址，默认 http://localhost:4399
  *   STUDIO_GIT_REMOTE 发布时使用的 Git remote，默认 origin
- *   STUDIO_GIT_BRANCH 发布时推送的分支，默认 master
+ *   STUDIO_GIT_BRANCH 发布时推送的分支，默认 main
  *
  * 设计约束:
  *   - 所有文件写入都经过 resolvePostFile / resolveUploadFile 的路径校验，
@@ -54,7 +54,7 @@ const DEFAULT_PORT = 4400;
 const DEFAULT_PREVIEW_ORIGIN = "http://localhost:4399";
 const COOKIE_NAME = "studio_session";
 const GIT_REMOTE = process.env.STUDIO_GIT_REMOTE?.trim() || "origin";
-const GIT_BRANCH = process.env.STUDIO_GIT_BRANCH?.trim() || "master";
+const GIT_BRANCH = process.env.STUDIO_GIT_BRANCH?.trim() || "main";
 /** JSON 请求体上限；图片走裸流，单独放宽。 */
 const JSON_BODY_LIMIT = 4 * 1024 * 1024;
 const UPLOAD_BODY_LIMIT = 32 * 1024 * 1024;
